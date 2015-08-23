@@ -99,9 +99,10 @@ namespace LibGens {
 	}
 
 	void File::readInt32A(size_t *dest) {
-		if (!readSafeCheck(dest)) return;
-		fread(dest, sizeof(size_t), 1, file_ptr);
-		*dest += root_node_address;
+		unsigned int u32dest;
+		if (!readSafeCheck(&u32dest)) return;
+		fread(&u32dest, sizeof(int), 1, file_ptr);
+		*dest = u32dest + root_node_address;
 
 		address_read_count++;
 	}
@@ -119,10 +120,11 @@ namespace LibGens {
 	}
 	
 	void File::readInt32BEA(size_t *dest) {
-		if (!readSafeCheck(dest)) return;
-		fread(dest, sizeof(size_t), 1, file_ptr);
-		Endian::swap(*dest);
-		*dest += root_node_address;
+		unsigned int u32dest;
+		if (!readSafeCheck(&u32dest)) return;
+		fread(&u32dest, sizeof(int), 1, file_ptr);
+		Endian::swap(u32dest);
+		*dest = u32dest + root_node_address;
 
 		address_read_count++;
 	}
@@ -402,7 +404,7 @@ namespace LibGens {
 			readInt32BE(&signature);
 
 			unsigned int offset_table_size=0;
-			size_t offset_table_address_absolute=0;
+			unsigned int offset_table_address_absolute=0;
 			readInt32BE(&offset_table_address_absolute);
 			readInt32BE(&offset_table_size);
 
@@ -456,7 +458,8 @@ namespace LibGens {
 
 		writeInt32BE(&final_table_size);
 		for (list<size_t>::iterator it=final_address_table.begin(); it!=final_address_table.end(); it++) {
-			writeInt32BE(&(*it));
+            unsigned int address = *it;
+			writeInt32BE(&address);
 		}
 
 		if (!no_extra_foot) writeNull(4);

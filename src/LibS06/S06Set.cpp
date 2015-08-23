@@ -427,7 +427,7 @@ namespace LibGens {
 		}
 		
 		file->goToEnd();
-		size_t table_address=file->getCurrentAddress() - 32;
+		unsigned int table_address=file->getCurrentAddress() - 32;
 		file->sortAddressTable();
 
 		list<size_t> file_address_table = file->getAddressTable();

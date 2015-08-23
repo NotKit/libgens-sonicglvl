@@ -253,7 +253,7 @@ namespace LibGens {
 		file->moveAddress(4);
 
 		for (size_t i=0; i<offset_count; i++) {
-			size_t address=0;
+			unsigned int address=0;
 			file->readInt32E(&address, big_endian);
 			addresses.push_back(address);
 		}
@@ -265,7 +265,7 @@ namespace LibGens {
 		file->writeNull(4);
 
 		for (size_t i=0; i<offset_count; i++) {
-			size_t address=addresses[i];
+			unsigned int address=addresses[i];
 			file->writeInt32(&address);
 		}
 	}

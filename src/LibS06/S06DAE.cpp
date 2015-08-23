@@ -20,6 +20,11 @@
 #include "LibGens.h"
 #include "S06XnFile.h"
 
+#if !defined(WIN32) || !defined(_WIN32)
+#include <sys/stat.h>
+#include <sys/types.h>
+#endif
+
 namespace LibGens {
 	void SonicXNFile::saveDAE(string filename, bool only_animation, float unit_scale) {
 		TiXmlDocument doc;
@@ -86,8 +91,11 @@ namespace LibGens {
 			if (last_slash) target_folder.erase(last_slash+1, target_folder.size()-last_slash-1);
 			else target_folder="";
 	
-
+#if defined(WIN32) || defined(_WIN32)
 			CreateDirectory((target_folder+"textures").c_str(), NULL);
+#else
+			mkdir((target_folder+"textures").c_str(), 0777);
+#endif
 			for (size_t j=0; j<textures.size(); j++) {
 				string tex_name=textures[j];
 				
@@ -1556,7 +1564,8 @@ namespace LibGens {
 						
 
 						Matrix4 m;
-						m.makeTransform(position*unit_scale, scale, orientation);
+                        Vector3 scaled_position = position * unit_scale;
+						m.makeTransform(scaled_position, scale, orientation);
 						
 						for (size_t x=0; x<4; x++) {
 							for (size_t y=0; y<4; y++) {

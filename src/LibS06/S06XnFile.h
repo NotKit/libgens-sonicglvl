@@ -19,7 +19,9 @@
 
 #pragma once
 
+#if defined(_WIN32) || defined(WIN32)
 #include "FBX.h"
+#endif
 
 #define LIBGENS_S06_XNINFO_ERROR_MESSAGE_NULL_FILE         "Trying to read xninfo data from unreferenced file."
 #define LIBGENS_S06_XNINFO_ERROR_MESSAGE_WRITE_NULL_FILE   "Trying to write xninfo data to an unreferenced file."
@@ -1017,7 +1019,7 @@ namespace LibGens {
 
 	class SonicXNOffsetTable : public SonicXNSection {
 		protected:
-			vector<size_t> addresses;
+			vector<unsigned int> addresses;
 		public:
 			SonicXNOffsetTable() {
 			}
@@ -1030,7 +1032,7 @@ namespace LibGens {
 				addresses.clear();
 			}
 
-			void push(size_t v) {
+			void push(unsigned int v) {
 				addresses.push_back(v);
 			}
 	};
@@ -1230,11 +1232,13 @@ namespace LibGens {
 
 			void setHeaders();
 
+#if defined(_WIN32) || defined(WIN32)
 			void importFBX(FBX *fbx);
 			void addFBXNode(FbxNode *lNode);
 			void addFBXMaterial(FbxSurfaceMaterial *lMaterial);
 			void addFBXMaterialProperty(FbxProperty *lProperty, SonicMaterialTable *sonic_material_table);
 			void addFBXSubmesh(FbxNode *lNode, FbxMesh *lMesh, SonicMesh *sonic_mesh, int material_index, int material_base_index, bool single_material, FbxAMatrix transform_matrix);
+#endif
 
 			void createTextureSection();
 			void createEffectSection();
