@@ -45,6 +45,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibGens-externals", "LibGen
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibS06", "LibS06\LibS06.vcxproj", "{0079F7ED-AD7D-4476-B627-2FCDB84F82FC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xndae", "xndae\xndae.vcxproj", "{2057EA8A-8451-4A57-A7D1-B1B1696715C1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7A61FCB4-BD18-4C87-9346-751FC4BBD1DF} = {7A61FCB4-BD18-4C87-9346-751FC4BBD1DF}
+		{0079F7ED-AD7D-4476-B627-2FCDB84F82FC} = {0079F7ED-AD7D-4476-B627-2FCDB84F82FC}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -91,6 +97,10 @@ Global
 		{0079F7ED-AD7D-4476-B627-2FCDB84F82FC}.Debug|Win32.Build.0 = Debug|Win32
 		{0079F7ED-AD7D-4476-B627-2FCDB84F82FC}.Release|Win32.ActiveCfg = Release|Win32
 		{0079F7ED-AD7D-4476-B627-2FCDB84F82FC}.Release|Win32.Build.0 = Release|Win32
+		{2057EA8A-8451-4A57-A7D1-B1B1696715C1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2057EA8A-8451-4A57-A7D1-B1B1696715C1}.Debug|Win32.Build.0 = Debug|Win32
+		{2057EA8A-8451-4A57-A7D1-B1B1696715C1}.Release|Win32.ActiveCfg = Release|Win32
+		{2057EA8A-8451-4A57-A7D1-B1B1696715C1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -32,12 +32,16 @@ THE SOFTWARE.
 
 namespace LibGens {
 	float asm_rsq(float r) {
+#ifdef WIN32
 		__asm {
 			fld1  // r0 = 1.f
 			fld r // r1 = r0, r0 = r
 			fsqrt // r0 = sqrtf( r0 )
 			fdiv  // r0 = r1 / r0
 		}
+#else
+        return 1. / sqrt( r );
+#endif
 	}
 
     bool Matrix3::toEulerAnglesZYX(float& rfYAngle, float& rfPAngle, float& rfRAngle) {
