@@ -73,6 +73,7 @@ namespace LibGens {
 				fclose(fp);
 			}
 		}
+		printf("%s - %s\n", ErrorCodeID(error_code_p).c_str(), description_p.c_str());
 	}
 
 	

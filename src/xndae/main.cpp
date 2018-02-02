@@ -40,7 +40,8 @@ int main(int argc, char** argv) {
 		string parameter = argv[i];
 		std::transform(parameter.begin(), parameter.end(), parameter.begin(), ::tolower);
 
-        if ((parameter.find(".xno") != string::npos) && (!source_model.size())) {
+        if ((parameter.find(".xno") != string::npos || (parameter.find(".gno") != string::npos))
+				&& (!source_model.size())) {
 			source_model = ToString(argv[i]);
 		}
 
@@ -48,7 +49,7 @@ int main(int argc, char** argv) {
 			output_file = ToString(argv[i]);
 		}
 
-        if ((parameter.find(".xnm") != string::npos)) {
+        if ((parameter.find(".xnm") != string::npos) || (parameter.find(".gnm") != string::npos)) {
             animations.push_back(ToString(argv[i]));
         }
 	}
@@ -58,6 +59,7 @@ int main(int argc, char** argv) {
 	}
 	
     LibGens::SonicXNFile *model = new LibGens::SonicXNFile(source_model, LibGens::MODE_AUTODETECT);
+
 	model->saveDAE(output_file);
 
     LibGens::SonicXNFile *animation = NULL;

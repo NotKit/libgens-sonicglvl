@@ -251,6 +251,7 @@ namespace LibGens {
 		nm += ToString(m[3][0]) + " " + ToString(m[3][1]) + " " + ToString(m[3][2]) + " " + ToString(m[3][3] * unit_scale) + " ";
 
 		TiXmlElement *matrixRoot = new TiXmlElement("matrix");
+		matrixRoot->SetAttribute("sid", "matrix");
 		TiXmlText *text = new TiXmlText(nm);
 		matrixRoot->LinkEndChild(text);
 		nodeRoot->LinkEndChild(matrixRoot);

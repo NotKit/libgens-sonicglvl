@@ -125,7 +125,7 @@ namespace LibGens {
 
 		Error::printfMessage(Error::WARNING, "MotionControl Type %s(%x) for Bone %d:", type_str.c_str(), type, bone_index);
 		Error::printfMessage(Error::WARNING, "  Flag: %d", flag);
-		Error::printfMessage(Error::WARNING, "  Start: %d End: %f Start Key: %f End Key: %f", start_frame, end_frame, start_frame, end_frame);
+		Error::printfMessage(Error::WARNING, "  Start: %f End: %f Start Key: %f End Key: %f", start_frame, end_frame, start_frame, end_frame);
 		Error::printfMessage(Error::WARNING, "  Elements: %d(%d) Elements Address: %d", element_count, element_size, address);
 
 		if (element_size == 24) {

@@ -734,11 +734,11 @@ namespace LibGens {
 	};
 
 	class SonicXNBones : public SonicXNSection {
-		protected:
+		public:
 			vector<string> bone_names;
 			vector<unsigned int> bone_indices;
 			vector<size_t> bone_names_addresses;
-		public:
+
 			SonicXNBones() {
 			}
 
